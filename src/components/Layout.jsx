@@ -4,6 +4,7 @@ import { useAuth } from '../context/AuthContext'
 import { 
   Home, 
   MapPin, 
+  Bot,
   User, 
   LogOut, 
   Menu,
@@ -18,6 +19,7 @@ export default function Layout({ children }) {
   const navigation = [
     { name: 'Dashboard', href: '/', icon: Home },
     { name: 'My Trips', href: '/trips', icon: MapPin },
+    { name: 'AI Agents', href: '/agents', icon: Bot },
   ]
 
   const isActive = (href) => {

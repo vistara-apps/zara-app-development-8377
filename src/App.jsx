@@ -1,6 +1,7 @@
 import React from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
 import { useAuth } from './context/AuthContext'
+import { AgentProvider } from './context/AgentContext'
 import Layout from './components/Layout'
 import LoginPage from './pages/LoginPage'
 import RegisterPage from './pages/RegisterPage'
@@ -10,6 +11,7 @@ import TripDetailPage from './pages/TripDetailPage'
 import CreateTripPage from './pages/CreateTripPage'
 import FlightSearchPage from './pages/FlightSearchPage'
 import LodgingSearchPage from './pages/LodgingSearchPage'
+import AgentManagementPage from './pages/AgentManagementPage'
 
 function App() {
   const { user } = useAuth()
@@ -25,17 +27,20 @@ function App() {
   }
 
   return (
-    <Layout>
-      <Routes>
-        <Route path="/" element={<DashboardPage />} />
-        <Route path="/trips" element={<TripsPage />} />
-        <Route path="/trips/new" element={<CreateTripPage />} />
-        <Route path="/trips/:id" element={<TripDetailPage />} />
-        <Route path="/trips/:id/flights" element={<FlightSearchPage />} />
-        <Route path="/trips/:id/lodging" element={<LodgingSearchPage />} />
-        <Route path="*" element={<Navigate to="/" replace />} />
-      </Routes>
-    </Layout>
+    <AgentProvider>
+      <Layout>
+        <Routes>
+          <Route path="/" element={<DashboardPage />} />
+          <Route path="/trips" element={<TripsPage />} />
+          <Route path="/trips/new" element={<CreateTripPage />} />
+          <Route path="/trips/:id" element={<TripDetailPage />} />
+          <Route path="/trips/:id/flights" element={<FlightSearchPage />} />
+          <Route path="/trips/:id/lodging" element={<LodgingSearchPage />} />
+          <Route path="/agents" element={<AgentManagementPage />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+      </Layout>
+    </AgentProvider>
   )
 }
 
