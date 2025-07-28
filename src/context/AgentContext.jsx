@@ -225,10 +225,10 @@ export function AgentProvider({ children }) {
   }, []);
 
   // Execute agent
-  const executeAgent = useCallback(async (agentId, arguments) => {
+  const executeAgent = useCallback(async (agentId, args) => {
     dispatch({ type: ActionTypes.SET_LOADING, payload: { type: 'execution', value: true } });
     try {
-      const result = await agentApi.executeAgent(agentId, arguments);
+      const result = await agentApi.executeAgent(agentId, args);
       dispatch({ 
         type: ActionTypes.SET_EXECUTION_RESULT, 
         payload: { agentId, result } 
@@ -286,4 +286,3 @@ export function useAgent() {
 }
 
 export default AgentContext;
-

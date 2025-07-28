@@ -64,14 +64,14 @@ class AgentApiClient extends ApiClient {
   /**
    * Execute an agent with given arguments
    * @param {string} agentId - ID of the agent to execute
-   * @param {Object} arguments - Arguments to pass to the agent
+   * @param {Object} args - Arguments to pass to the agent
    * @returns {Promise<Object>} Agent execution result
    */
-  async executeAgent(agentId, arguments = {}) {
+  async executeAgent(agentId, args = {}) {
     try {
       const response = await this.post('/agent_call', {
         agent_id: agentId,
-        arguments: arguments
+        arguments: args
       });
       return response;
     } catch (error) {
@@ -118,4 +118,3 @@ class AgentApiClient extends ApiClient {
 // Create and export a singleton instance
 const agentApi = new AgentApiClient();
 export default agentApi;
-
